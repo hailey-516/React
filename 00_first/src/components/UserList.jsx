@@ -1,29 +1,57 @@
 import { useState } from "react";
 
-function User(props) {
-    const user = props.user;
-    return (
-        <tr>
-            <td>{user.name}</td>
-            <td>{user.age}</td>
-            <td>{user.gender}</td>
-            <td>{user.phone}</td>
-        </tr>
-    )
-}
+    function User(props) {
+        const user = props.user;
+        return (
+            <tr>
+                <td>{user.name}</td>
+                <td>{user.age}</td>
+                <td>{user.gender}</td>
+                <td>{user.phone}</td>
+            </tr>
+        )
+    }
 
-function UserList() {
-    const [list, setList] = useState([
-        { name: '카리나', age: 25, gender: '여자', phone: '010-1234-1234'},
-        { name: '윈터', age: 24, gender: '여자', phone: '010-1234-5678'},
-        { name: '아이유', age: 30, gender: '여자', phone: '010-1234-1111'}
-    ]);
+    function MyInput(props) {
+        // propts => 부모 컴포넌트를 통해 전달된 상태(데이터)
+        const changeInputValue = (e) => {
+            const value = e.target.value;
+            props.setData(value);
+        }
+
+        return (
+            <input type={props.type}
+                    placeholder={props.placeholder}
+                    value={props.data}
+                    onChange={changeInputValue} />
+        )
+    }
+
+    function UserList() {
+        const [list, setList] = useState([
+            { name: '카리나', age: 25, gender: '여자', phone: '010-1234-1234'},
+            { name: '윈터', age: 24, gender: '여자', phone: '010-1234-5678'},
+            { name: '아이유', age: 30, gender: '여자', phone: '010-1234-1111'}
+        ]);
 
     const [name, setName] = useState('');
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
     const [phone, setPhone] = useState('');
 
+    const registUser = () => {
+        // alert(name + ", " + age + ", " + gender + ", " + phone);
+        const newUser = {name: name, age: age, gender: gender, phone: phone};
+        list.push(newUser);
+
+        setList([...list]); // 전개 연산자 : 새로운 배열로 복사
+
+        // 입력창 부분을 초기화
+        setName('');
+        setAge('');
+        setGender('');
+        setPhone('');
+    }
 
     function changeName(e) {
         const inputValue = e.target.value;  // 입력 요소의 변경된 값
@@ -54,11 +82,16 @@ function UserList() {
             <div>
                 <h3>회원 정보 등록</h3>
                 <hr></hr>
-                <input type='text' placeholder='이름' value={name} onChange={changeName} />
+                {/* <input type='text' placeholder='이름' value={name} onChange={changeName} />
                 <input type='text' placeholder='나이' value={age} onChange={changeAge} />
                 <input type='text' placeholder='성별' value={gender} onChange={changeGender} />
-                <input type='text' placeholder='연락처' value={phone} onChange={changePhone} />
-                <button>등록</button>
+                <input type='text' placeholder='연락처' value={phone} onChange={changePhone} /> */}
+                
+                <MyInput type='text' placeholder='이름' data={name} setData={setName} />
+                <MyInput type='text' placeholder='나이' data={age} setData={setAge} />
+                <MyInput type='text' placeholder='성별' data={gender} setData={setGender} />
+                <MyInput type='text' placeholder='연락처' data={phone} setData={setPhone} />
+                <button onClick={registUser}>등록</button>
 
             </div>
 
