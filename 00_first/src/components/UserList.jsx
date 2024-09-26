@@ -13,7 +13,7 @@ import { useState } from "react";
     }
 
     function MyInput(props) {
-        // propts => 부모 컴포넌트를 통해 전달된 상태(데이터)
+        // props => 부모 컴포넌트를 통해 전달된 상태(데이터)
         const changeInputValue = (e) => {
             const value = e.target.value;
             props.setData(value);
@@ -53,25 +53,25 @@ import { useState } from "react";
         setPhone('');
     }
 
-    function changeName(e) {
-        const inputValue = e.target.value;  // 입력 요소의 변경된 값
-        setName(inputValue);                // 해당 값을 상태에 적용
-    }
+    // function changeName(e) {
+    //     const inputValue = e.target.value;  // 입력 요소의 변경된 값
+    //     setName(inputValue);                // 해당 값을 상태에 적용
+    // }
 
-    function changeAge(e) {
-        const inputValue = e.target.value;
-        setAge(inputValue);
-    }
+    // function changeAge(e) {
+    //     const inputValue = e.target.value;
+    //     setAge(inputValue);
+    // }
 
-    function changeGender(e) {
-        const inputValue = e.target.value;
-        setGender(inputValue);
-    }
+    // function changeGender(e) {
+    //     const inputValue = e.target.value;
+    //     setGender(inputValue);
+    // }
 
-    function changePhone(e) {
-        const inputValue = e.target.value;
-        setPhone(inputValue);
-    }
+    // function changePhone(e) {
+    //     const inputValue = e.target.value;
+    //     setPhone(inputValue);
+    // }
 
     return (
         <div>
