@@ -10,6 +10,10 @@ import FuncComp from './pages/FuncComp';
 import UseStateHook from './pages/hook/UseStateHook';
 import {UseEffectHook} from './pages/hook/UseEffectHook';
 import UseRefHook from './pages/hook/UseRefHook';
+import UseContextHook from './pages/hook/useContext/UseContextHook';
+import UseMemoHook from './pages/hook/UseMemo/UseMemoHook';
+import UseCallbackHook from './pages/hook/useCallback/UseCallbackHook';
+
 
 /*
   * react-router-dom 모듈
@@ -47,6 +51,9 @@ function App() {
           <Route path="/us" element={<UseStateHook />} />
           <Route path="/ue" element={<UseEffectHook />} />
           <Route path="/ur" element={<UseRefHook />} />
+          <Route path="/uc" element={<UseContextHook />} />
+          <Route path="/um" element={<UseMemoHook />} />
+          <Route path="/ucb" element={<UseCallbackHook />} />
         </Routes>
       </main>
       <footer>

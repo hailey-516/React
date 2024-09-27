@@ -1,35 +1,33 @@
-import { useState, useEffect } from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 import './App.css';
+import { Menubar } from './components/Menubar';
+import Timer from './pages/Timer';
+import Count from './pages/Count';
+
+let mainStyle = {
+  marginTop: "100px"
+};
 
 function App() {
-  const [day, setDay] = useState(new Date());
-
-  useEffect(()=>{
-    // 1초마다 시간에 대한 정보를 업데이트
-    setInterval(()=> {
-      setDay(new Date())
-    }, 1000);
-  }, [])
-
-  const formatDate = day.toLocaleDateString('ko-KR', {
-    year: '2-digit',
-    month: '2-digit',
-    day: '2-digit'
-  });
-  const formatTime = day.toLocaleTimeString('ko-KR', {
-    hour : '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  });
-
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>현재 시간</h1>
-        <p>{formatDate}</p>
-        <p>{formatTime}</p>
+    <BrowserRouter>
+    <div style={{height: "50px"}}></div>
+      <header style={{margin:"auto", width: "300px"}}>
+        <Menubar />
       </header>
-    </div>
+
+<main style={mainStyle}>
+        <Routes>
+          <Route path="/" element={<p>메인</p>} />
+          <Route path="/timer" element={<Timer />} />
+          <Route path="/count" element={<Count />} />
+        </Routes>
+        </main>
+
+    </BrowserRouter>
+    
   );
 }
 
