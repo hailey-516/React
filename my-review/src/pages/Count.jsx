@@ -7,12 +7,12 @@ const taStyle = {
 }
 
 function Count() {
-    const [text, setText] = useState(0);
+    const [text, setText] = useState('');
 
     const taRef = useRef();
 
     const changeText = (e) => {
-        setText(e.target.value.length);
+        setText(e.target.value);
     }
 
     const resetPage = () => {
