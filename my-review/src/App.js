@@ -5,6 +5,7 @@ import Timer from './components/Timer'
 import Home from './components/Home';
 import { createContext, useState } from 'react';
 import Count from './components/Count';
+import Stopwatch from './components/Stopwatch';
 
 // context 생성
 export const UserContext = createContext();
@@ -33,6 +34,7 @@ function App() {
           <Link to="/">HOME</Link>
           <Link to="/timer">타이머</Link>
           <Link to="/count">글자 수 세기</Link>
+          <Link to="/stopwatch">스톱워치</Link>
         </nav>
       </header>
 
@@ -43,6 +45,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/timer" element={<Timer />} />
           <Route path="/count" element={<Count />} />
+          <Route path="/stopwatch" element={<Stopwatch />} />
         </Routes>
 
         </UserContext.Provider>
