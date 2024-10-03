@@ -8,7 +8,7 @@ const Stopwatch = () => {
         let timer;
 
         if (running) {
-            setInterval(()=>{
+            timer = setInterval(()=>{
 
                 setTime(t => t + 1);
 
